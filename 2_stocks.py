@@ -8,7 +8,7 @@ amzn = utils.readHistoricalCsv("data/amzn.csv")
 
 # Data prep
 N = len(goog.x)  # data len
-Y = np.roll(amzn.y1, 15)  # Synthetic delay in data
+Y = np.roll(amzn.y1, -15)  # Synthetic delay in data
 i_st = N // 4
 i_en = 3 * N // 4
 n = i_en - i_st  # sample len
@@ -22,7 +22,7 @@ max_dt = N // 4
 fig, ax = plt.subplots()
 
 ax.set_xticks(np.arange(0, n, 10))
-# ax.set_ylim([-12.5, 12.5])
+ax.set_ylim([150, 200])
 
 # FIG 2 - Cross-correlation
 fig2, ax2 = plt.subplots()
@@ -70,7 +70,7 @@ for l in l2:
 fig2.savefig("plots/2_3b.png", transparent=False, dpi=80, bbox_inches="tight")
 
 # 4 - optimal offset
-dt = 15
+dt = -15
 y = Y[i_st + dt : i_en + dt]
 ax.plot(x, y, "g^-")
 ax2.plot([dt], [sum(utils.corr(y0, y))], "g^-")
