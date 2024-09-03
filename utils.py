@@ -1,4 +1,5 @@
 import numpy as np
+from PIL import Image
 
 
 # QoL to attach data to attributes
@@ -32,3 +33,12 @@ def corr(y1, y2):
     y1 = centre(y1)
     y2 = centre(y2)
     return y1 * y2 / (n * np.std(y1) * np.std(y2))
+
+
+def readImage(filename):
+    img = np.array(Image.open(filename))
+    return img
+
+
+def grayscale(img):
+    return np.mean(img, axis=2)

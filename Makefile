@@ -13,4 +13,4 @@ show:
 	ls plots/2_*.png | xargs -n 1 wezterm imgcat
 
 walley:
-	convert data/walley.png -crop 20x20+1630+870 data/walley_ref.png
+	convert data/wally.png -crop 20x20+1630+870 data/wally_ref.png
